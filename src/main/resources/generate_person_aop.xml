@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	">
+
+	<aop:aspectj-autoproxy />
+
+	<!-- Aspect -->
+	<bean id="logAspect" class="code.spring.person.gen.generator.aop.LoggingAspect" />
+
+	<context:property-placeholder
+		location="classpath:properties/generator.properties" />
+
+
+	<!-- Person Generator bean -->
+	<bean name="personGenerator"
+		class="code.spring.person.gen.generator.impl.PersonGeneratorImpl"
+		autowire="byType"></bean>
+
+
+	<!-- Generator beans -->
+	<bean name="nameGenerator"
+		class="code.spring.person.gen.generator.impl.RandomNameGenerator"
+		autowire="byType">
+	</bean>
+
+	<bean name="addressGenerator"
+		class="code.spring.person.gen.generator.impl.RandomAddressGenerator"
+		autowire="byType">
+	</bean>
+
+	<bean name="emailGenerator"
+		class="code.spring.person.gen.generator.impl.RandomEmailGenerator"
+		autowire="byType">
+	</bean>
+
+	<bean name="dateGenerator"
+		class="code.spring.person.gen.generator.impl.RandomDateGenerator"
+		autowire="byType">
+		<property name="format" value="yyyy.MM.dd" />
+		<property name="startDate" value="${generator.startBirthDate}" />
+		<property name="endDate" value="${generator.endBirthDate}" />
+	</bean>
+
+
+	<!-- Concrete Configuration beans -->
+	<bean name="nameGenConfig"
+		class="code.spring.person.gen.generator.config.NameGeneratorConfig"
+		autowire="byName">
+	</bean>
+
+	<bean name="addressGenConfig"
+		class="code.spring.person.gen.generator.config.AddressGeneratorConfig"
+		autowire="byName">
+	</bean>
+
+	<bean name="emailGenConfig"
+		class="code.spring.person.gen.generator.config.EmailGeneratorConfig"
+		autowire="byName">
+	</bean>
+
+
+	<!-- Configuration Setting beans -->
+	<!-- Holds data read from generator configuration files. -->
+	<bean id="lastNames" factory-bean="configFactory" factory-method="readLines">
+		<constructor-arg value="${generator.lastNames}" />
+	</bean>
+
+	<bean id="menNames" factory-bean="configFactory" factory-method="readLines">
+		<constructor-arg value="${generator.menNames}" />
+	</bean>
+
+	<bean id="womenNames" factory-bean="configFactory" factory-method="readLines">
+		<constructor-arg value="${generator.womenNames}" />
+	</bean>
+
+	<bean id="emailDomains" factory-bean="configFactory"
+		factory-method="readLines">
+		<constructor-arg value="${generator.emailDomains}" />
+	</bean>
+
+	<bean id="cityEntries" factory-bean="configFactory"
+		factory-method="readCityEntries">
+		<constructor-arg value="${generator.cities}" />
+	</bean>
+
+	<bean id="streetNames" factory-bean="configFactory"
+		factory-method="readLines">
+		<constructor-arg value="${generator.streetNames}" />
+	</bean>
+
+
+	<!-- Reader and Factory beans -->
+	<!-- This bean will be used to read configuration settings from property 
+		files. -->
+	<!-- See the beans above. -->
+	<bean name="configFactory" class="code.spring.person.gen.generator.readers.ConfigReader"
+		autowire="byType">
+	</bean>
+
+	<bean name="resourceFileReader"
+		class="code.spring.person.gen.generator.readers.ResourceFileReader">
+	</bean>
+
+
+	<!-- Random Number Generator -->
+	<bean name="random" class="java.util.Random"></bean>
+
+</beans>
+
