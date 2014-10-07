@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	">
+
+	<context:property-placeholder
+		location="classpath:properties/generator.properties" />
+
+	<bean name="singlePrinter" class="code.spring.proba.printer.SingleResourcePrinter"></bean>
+
+	<bean name="listResourcePrinter" class="code.spring.proba.printer.ListResourcesPrinter">
+		<property name="printer" ref="singlePrinter"></property>
+		<property name="resourceURLs">
+			<list>
+				<value>${generator.womanNames}</value>
+				<value>${generator.manNames}</value>
+				<value>${generator.lastNames}</value>
+				<value>${generator.emailDomains}</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="propsResourcePrinter" class="code.spring.proba.printer.PropsResourcesPrinter">
+		<property name="printer" ref="singlePrinter"></property>
+		<property name="resourceURLs">
+			<props>
+				<prop key="womanNames">${generator.womanNames}</prop>
+				<prop key="manNames">${generator.manNames}</prop>
+				<prop key="lastNames">${generator.lastNames}</prop>
+				<prop key="emailDomains">${generator.emailDomains}</prop>
+			</props>
+		</property>
+	</bean>
+
+
+</beans>
+

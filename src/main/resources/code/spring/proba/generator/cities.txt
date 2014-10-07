@@ -1,0 +1,15 @@
+New York, NY, 10000, 10473
+Los Angeles, CA, 90012, 91335
+Chicago, IL, 60607, 60799
+Miami, FL, 33030, 33222
+Houston, TX, 77002, 77296
+Dallas, TX, 75201, 75369
+Phoenix, AZ, 85005, 85095  
+Philadelphia, PA, 19100, 19255
+Washington, DC, 98000, 98120
+San Diego, CA, 91990, 92190
+San Antonio, TX, 78201, 78299
+Austin, TX, 78799, 78933 
+Boston, MA, 02100, 02299
+Detroit, MI, 48201, 48299
+San Francisco, CA, 94100, 94199
