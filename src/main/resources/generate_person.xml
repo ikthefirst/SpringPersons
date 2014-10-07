@@ -59,6 +59,7 @@
 
 
 	<!-- Configuration Setting beans -->
+	<!-- Holds data read from generator configuration files. -->
 	<bean id="lastNames" factory-bean="configFactory" factory-method="readLines">
 		<constructor-arg value="${generator.lastNames}" />
 	</bean>
@@ -88,6 +89,9 @@
 
 
 	<!-- Reader and Factory beans -->
+	<!-- This bean will be used to read configuration settings from property 
+		files. -->
+	<!-- See the beans above. -->
 	<bean name="configFactory" class="code.spring.person.gen.generator.readers.ConfigReader"
 		autowire="byType">
 	</bean>
