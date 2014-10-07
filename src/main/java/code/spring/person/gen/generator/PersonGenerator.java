@@ -2,7 +2,7 @@ package code.spring.person.gen.generator;
 
 import java.util.List;
 
-import code.spring.person.gen.person.Person;
+import code.spring.person.bo.Person;
 
 /**
  * Interface for generating person objects.

@@ -1,4 +1,4 @@
-package code.spring.person.gen.person;
+package code.spring.person.bo;
 
 import java.util.Date;
 

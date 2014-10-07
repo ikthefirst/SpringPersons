@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import code.spring.person.bo.Person;
 import code.spring.person.gen.generator.AddressGenerator;
 import code.spring.person.gen.generator.DateGenerator;
 import code.spring.person.gen.generator.EmailGenerator;
 import code.spring.person.gen.generator.NameGenerator;
 import code.spring.person.gen.generator.PersonGenerator;
-import code.spring.person.gen.person.Person;
 
 public class PersonGeneratorImpl implements PersonGenerator {
 

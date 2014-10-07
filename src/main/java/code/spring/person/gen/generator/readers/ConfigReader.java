@@ -5,8 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import code.spring.person.gen.generator.config.CityEntry;
+import code.spring.person.bo.CityEntry;
 
+/**
+ * Configuration reader. This class will be used to read configuration data for
+ * generators.
+ */
 public class ConfigReader {
 
 	private ResourceFileReader resourceFileReader;

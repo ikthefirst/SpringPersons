@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
-import code.spring.person.gen.generator.config.CityEntry;
+import code.spring.person.bo.CityEntry;
 
 @Configuration
 @PropertySource("classpath:properties/generator.properties")

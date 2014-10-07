@@ -5,9 +5,9 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import code.spring.person.bo.CityEntry;
 import code.spring.person.gen.generator.AddressGenerator;
 import code.spring.person.gen.generator.config.AddressGeneratorConfig;
-import code.spring.person.gen.generator.config.CityEntry;
 
 public class RandomAddressGenerator implements AddressGenerator {
 

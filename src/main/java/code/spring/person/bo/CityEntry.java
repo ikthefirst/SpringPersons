@@ -1,4 +1,4 @@
-package code.spring.person.gen.generator.config;
+package code.spring.person.bo;
 
 public class CityEntry {
 

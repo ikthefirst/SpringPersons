@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import code.spring.person.bo.CityEntry;
+
 public class AddressGeneratorConfig {
 
 	private List<CityEntry> cityEntries;
